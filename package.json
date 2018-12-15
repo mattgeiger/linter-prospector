@@ -1,0 +1,90 @@
+{
+  "name": "linter-prospector",
+  "main": "./lib/linter-prospector.js",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Lint python on the fly, using prospector",
+  "repository": "",
+  "license": "MIT",
+  "scripts": {
+    "test": "apm test",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "atom": ">=1.4.0 <2.0.0"
+  },
+  "configSchema": {
+    "executablePath": {
+      "type": "string",
+      "default": "prospector",
+      "description": "Command or full path to prospector. Use %p for current project directory (no trailing /) or %h for current project name.",
+      "order": 1
+    },
+    "pythonPath": {
+      "type": "string",
+      "default": "",
+      "description": "Paths to be added to $PYTHONPATH. Use %p for current project directory or %f for the directory of the current file.",
+      "order": 1
+    },
+    "profile": {
+      "type": "string",
+      "default": "",
+      "description": "Path to .prospector.yaml file. Use %p for the current project directory or %f for the directory of the current file.",
+      "order": 2
+    },
+    "workingDirectory": {
+      "type": "string",
+      "default": "%p",
+      "description": "Directory prospector is run from. Use %p for the current project directory or %f for the directory of the current file.",
+      "order": 2
+    },
+    "userArgs": {
+      "title": "Prospector Arguments",
+      "type": "string",
+      "default": "",
+      "description": "Extra arguments for prospector, separated with a space.",
+      "order": 3
+    }
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-linter": "^10.0.0",
+    "atom-package-deps": "^4.5.0",
+    "lazy-req": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "jasmine-fix": "^1.3.1"
+  },
+  "package-deps": [
+    "linter:2.0.0"
+  ],
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "rules": {
+      "global-require": "off",
+      "import/no-unresolved": [
+        "error",
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ]
+    },
+    "globals": {
+      "atom": true
+    },
+    "env": {
+      "node": true
+    }
+  }
+}
