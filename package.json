@@ -1,10 +1,10 @@
 {
   "name": "linter-prospector",
   "main": "./lib/linter-prospector.js",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "description": "Lint python on the fly, using prospector",
-  "repository": "",
+  "repository": "https://github.com/mattgeiger/linter-prospector",
   "license": "MIT",
   "scripts": {
     "test": "apm test",
